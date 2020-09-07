@@ -1,0 +1,67 @@
+<h1 class="mt-4">Oh</h1>
+<p class="lead mb-3">Welcome! <%= name %></p>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+
+
+
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Join room</h1>
+        
+          <form action="/index/join/:roomid" method="POST">
+            <div class="form-group">
+              <label for="roomid">Roomid</label>
+              <input
+                type="roomid"
+                id="roomid"
+                name="roomid"
+                class="form-control"
+                placeholder="Enter roomid"
+                value="<%= typeof roomid != 'undefined' ? roomid : '' %>"
+              />
+              <label for="roompwd">Roomid</label>
+              <input
+                type="roompwd"
+                id="roompwd"
+                name="roompwd"
+                class="form-control"
+                placeholder="Enter roompwd"
+                value="<%= typeof roompwd!= 'undefined' ? roompwd : '' %>"
+              />  
+              <button type="submit" class="btn btn-primary btn-block">Join</button>
+            </div>
+          </form> 
+
+          <form action="/index/dashboard/:roomid" method="POST">
+            <div class="form-group">
+                <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Create room</h1> 
+                <label for="Password">password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  placeholder="Setting password"
+                  
+                />  
+                <button type="submit" class="btn btn-primary btn-block">Create</button>
+                <!-- <a id="Btn_test" onclick="btn_click()" class="btn btn-outline-primary">CREATE</a> -->
+            </form> 
+          
+          
+
+        <!-- <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Create room</h1> 
+        <a id="Btn_test" onclick="btn_click()" class="btn btn-outline-primary">CREATE</a> -->
+          <!-- <button type="submit" class="btn btn-primary btn-block">Create</button> -->
+          <!-- <button v-on:click="alert">Create</button> -->
+          
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  
