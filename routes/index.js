@@ -1,39 +1,13 @@
 const express = require('express')
-const bcrypt = require("bcryptjs")
 const router = express.Router()
-const {ensureAuthenticated} = require("../config/auth")
 
-const Room = require("../models/Room") //call room model
+
+
 const User = require("../models/User") //call user model
-
-
-// welcome page
-router.get('/',  (req, res) => res.render('welcome'))
-
-router.get('/123',  (req, res) => res.send('welcome'))
-
-
-
-//Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) => res.render('dashboard', {
-    name: req.user.name
-}))
 
 
 let sessions = {}
 
-//test Create Room
-// router.post("/index/create/:roomid", (req, res) => {
-//   console.log(req.body)
-//   console.log(req.params.roomid + "starts streaming")
-//   sessions[req.params.roomid] = req.body
-// })
-
-// Create Room
-router.get("/index/create", (res) => {
-  res.json({"123":123});
-  
-})
 
 // Create Room
 router.post("/index/create/:roomid", (req, res) => {
@@ -51,10 +25,6 @@ router.post("/index/create/:roomid", (req, res) => {
   res.json({"success": true, "msg": "Your room "+req.body.roomid+" is opened successfully!"})
 })
 
-// test join room
-// router.get("/index/join/:roomid", (req, res) => {
-// res.json({"data": sessions[req.params.roomid]})
-// })
 
 // Join Room
 router.post("/index/join/:roomid", (req, res) => {

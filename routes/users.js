@@ -1,16 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require("bcryptjs")
-const passport = require("passport")
-const {ensureAuthenticated} = require("../config/auth")
-
-const multer  = require('multer')
-// const upload = multer() //為了接收form data，body parser無法 用他
-
 
 //Model
 const User = require("../models/User") //call user model
-const Room = require("../models/Room") //call room model
+
 
 //Login page
 router.get('/login',  (req, res) => res.render('login'))
@@ -51,11 +44,6 @@ router.post("/register", (req, res) => {
               success
             })
             
-          //   bcrypt.genSalt(10, (err, salt) => await bcrypt.hash(roompwd, salt, (err, hash) => {
-          //   if (err)
-          //     throw err
-          //   newUser.password = hash
-          // }))
             newUser.save()
               .then(user => {
                 res.json({"success":true, "msg":"register successfuly"})
@@ -66,20 +54,9 @@ router.post("/register", (req, res) => {
     }
 })
 
-// Login
-// router.post('/login', upload.none(), function(req, res, next) {
-//   passport.authenticate('local', function(err, user, info) {
-//     console.log(req.body)
-//     if (err) { return next(err) }
-//     if (!user) { return res.json("wrong") }
-//     req.logIn(user, function() {
-//     console.log(req.user)
-//     res.json(req.user)
-//     })
-//   })(req, res, next)
-// })
 
-//亂寫的Login
+
+// Login
 router.post('/login', function(req, res) {
   const email = req.body.email
   console.log(email)
@@ -116,8 +93,6 @@ router.post('/logout' , (req, res) => {
     console.log(req.body.email + " is now offline")
     res.json({"success":true, "msg":"logout successfully"})
   }) 
-  req.logout()
-  
 })
 
 // 顯示某使用者資料
